@@ -1,11 +1,12 @@
 {
-  "name": "package",
+  "name": "screen-snip",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "html2canvas": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -15,7 +16,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish:npm": "rm -rf dist && mkdir dist && babel ./src -d dist --copy-files"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +41,32 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "screen snip",
+  "main": "dist/ScreenSnip.js",
+  "module": "dist/ScreenSnip.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderajju/screen-snip.git"
+  },
+  "keywords": [
+    "screen-snip",
+    "screenshot",
+    "screencapture"
+  ],
+  "author": "Aju Alex",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexanderajju/screen-snip/issues"
+  },
+  "homepage": "https://github.com/alexanderajju/screen-snip#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.18.6",
+    "@babel/preset-react": "^7.18.6"
   }
 }

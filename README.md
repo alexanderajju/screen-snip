@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# screen-snip
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Examples 
 
-## Available Scripts
+<img src="./Images/image1.png">
 
-In the project directory, you can run:
+<img src="./Images/images2.png">
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```javaScript
+import logo from './logo.svg';
+import './App.css';
+import {ScreenSnip} from 'screen-snip'
+import { useState } from 'react';
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+function App() {
+  const [images, setImages] = useState([])
 
-### `npm test`
+  const handleScreenCapture = screenCapture => {
+    setImages([...images, screenCapture])
+  };
+  return (
+    <ScreenSnip endCapture={handleScreenCapture}>
+      {({ capture }) => (
+        <div>
+          <button onClick={capture}>Snap</button>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+          <div style={{ display: "flex" }}>
 
-### `npm run build`
+            <img src="/Img/dog_1.png" alt="" />
+            <img src="/Img/cat1.png" alt="" />
+            <img src="/Img/cat.png" alt="" />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+          </div>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat, iusto
+            repellat quae quos in rerum sunt obcaecati provident placeat hic saepe
+            possimus eaque repellendus consequuntur quisquam nihil, sit ullam
+            ratione.
+          </p>
+          <div id="content">
+            <h3>Hello, this is a H3 tag</h3>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+            <p>A paragraph</p>
+          </div>
+          <div id="editor"></div>
+          <center>
+            <div id="divToPrint" style={{display:"flex", justifyContent:"space-between"}}>
+              {images.map((image) => (
+                <img src={image} alt='react-screen-capture' />
+              ))}
+            </div>
 
-### `npm run eject`
+            <p>
+              {images && <button>Download</button>}
+            </p>
+          </center>
+        </div>
+      )}
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    </ScreenSnip>
+  );
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+export default App;
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+````
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<span style="color:red">Usage</span>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+```javaScript
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+import {ScreenSnip} from 'screen-snip'
 
-### Analyzing the Bundle Size
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+After importing ScreenSnip use the methods capture and endCapture showing in the example above
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<table>
+  <tr>
+    <th>Argument</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>capture</td>
+    <td>To start snip the screen</td>
+  </tr>
+  <tr>
+    <td>endCapture</td>
+    <td>returns base64 of the snip</td>
+  </tr>
+</table>
 
-### Advanced Configuration
+## ⚖️ License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The MIT License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
